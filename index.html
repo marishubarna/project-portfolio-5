@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="website icon" type="png" href="images/images1.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&family=Protest+Riot&display=swap" rel="stylesheet">
+    <title>Travel Bus Kan-Kan</title>
+</head>
+<body>
+    <div class="center">
+        <h1>Travel Agency</h1>
+    </div>
+    <h2>Wycieczki, na które są wolne miejsca</h2>
+    <div class="list">
+        <ul>
+            <li>1. dnia 2019-09-05 jedziemy do Włochy, Wenecja, cena: 1200</li>
+            <li>2. dnia 2019-09-14 jedziemy do Włochy, Wenecja, cena: 1200 </li>
+            <li>3. dnia 2019-08-14 jedziemy do Polska. Warszawa, cena: 640</li>
+            <li>4 dnia 2019-08-14 jedziemy do Francja, Paryz, cena: 1300 </li>
+            <li>5. dnia 2019-09-14 jedziemy do Francja. Paryz, cena: 1200</li>
+            <li>6. dnia 2019-09-14 jedziemy do Hiszpania, Barcelona, cena: 1400</li>
+        </ul>
+    </div>
+
+
+    <div class="content">
+    <div class="best-sale">
+        <h3> <strong>B</strong>est Selery</h3>
+        <table class="best-selery">
+            <tr>
+            <td>Wenecja</td>
+            <br>
+            <td>Kwiecien</td>
+            </tr>
+            <tr>
+                <td>Londyn</td>
+                <br>
+                <td>Lipiec</td>
+            </tr>
+            <tr>
+                <td>Rzym</td>
+                <br>
+                <td>Wrzesien</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="photos">
+        <h3 class="photos-dispay"> <strong>P</strong>hotos</h3>
+        <table>
+            <tr>
+                <td class="td-images" ><img src="images/images2.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images3.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images4.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td class="td-images"><img src="images/images5.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images6.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images8.jpg" alt=""></td>
+            </tr>
+            <tr>
+                <td class="td-images"><img src="images/images9.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images10.jpg" alt=""></td>
+                <td class="td-images"><img src="images/images11.jpg" alt=""></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="Contaks">
+        <h3><strong>B</strong>est Selery</h3>
+       <p class="link"><a href="https://t.me/marian21barna">Napisz do nas</a></p>
+       <p class="phone">+48 502 840 558</p>
+       <form class="forms" action="">
+        <input type="text" name="name" id="name" placeholder="Name">
+       <input type="text" name="Surname" id="Surname" placeholder="Surname"><br>
+       <label for="country">Chosse your country</label><br>
+       <select name="country" id="country">
+        <option value="p">Poland</option>
+        <option value="f">France</option>
+        <option value="u">Ukraine</option>
+        <option value="m">Mexico</option>
+        <option value="i">Italy</option>
+       </select><br>
+       <input type="date" name="date"  id="date"><br>
+       <label for="country">Chosse your holiday</label>
+       <br>
+       <select name="wycieczki" id="wycieczki">
+        <option value="p">USA</option>
+        <option value="f">Greec</option>
+        <option value="u">Turkey</option>
+        <option value="m">England</option>
+        <option value="i">Sweden</option>
+       </select><br>
+       <input type="number" id="Quantity of people" placeholder="Quantity of people">
+    <input type="number" placeholder="baggage" name="baggage" id="baggage">
+   <br> <button type="submit">Sign up</button>
+   <button name="wynik" type="submit">wynik</button>
+</form>
+    </div>
+</div>
+<div class="down-menu">
+    <h1>Zrobila - Shuniaieva Marianna</h1>
+</div>
+<script>
+    const form = document.querySelector(".forms");
+    const quantityInput = document.getElementById("Quantity of people");
+    const baggageInput = document.getElementById("baggage");
+    const destinationSelect = document.getElementById("wycieczki");
+  
+    form.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent default form submission
+  
+      const quantity = parseFloat(quantityInput.value);
+      const baggage = parseFloat(baggageInput.value);
+      const destination = destinationSelect.value;
+  
+      if (isNaN(quantity) || isNaN(baggage)) {
+        alert("Please enter valid numbers for quantity and baggage.");
+        return;
+      }
+  
+      const basePrice = getDestinationPrice(destination); // Get base price based on destination
+      const randomDiscount = Math.floor(Math.random() * 3) + 1; // Generate random discount between 1 and 3
+      const discountedPrice = basePrice - randomDiscount;
+      const baggageFee = generateBaggageFee(baggage); // Generate random baggage fee between 2 and 5 PLN
+  
+      const total = quantity * discountedPrice + baggage + baggageFee;
+  
+      // Choose one of the following methods to display the total:
+  
+      // Method 1: Alert
+      // alert("Total: " + total + " zł");
+  
+      // Method 2: Create a new element and display it in the form
+      const totalParagraph = document.createElement("p");
+      totalParagraph.textContent = "Total: " + total + " zł";
+      form.appendChild(totalParagraph);
+    });
+  
+    function getDestinationPrice(destination) {
+      switch (destination) {
+        case "p":
+          return 1000;
+        case "f":
+          return 1500;
+        case "u":
+          return 1200;
+        case "m":
+          return 800;
+        case "i":
+          return 900;
+        default:
+          return 0;
+      }
+    }
+  
+    function generateBaggageFee(baggage) {
+      return Math.floor(Math.random() * 4) + 2; // Generate random fee between 2 and 5 PLN
+    }
+  </script>
+</body>
+</html>
